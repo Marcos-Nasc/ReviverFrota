@@ -1,0 +1,13 @@
+# Usado quando o projeto fica dentro do htdocs (ex.: XAMPP) e o endereço é /checklist-frota/.
+# Em produção, prefira apontar o DocumentRoot direto para a pasta public/.
+
+DirectoryIndex index.php
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    # Bloqueia pastas internas pelo navegador
+    RewriteRule ^(config|src|storage|database|bin)(/|$) - [F,L]
+    # Raiz vai para a aplicação
+    RewriteRule ^$ public/ [R=302,L]
+</IfModule>
